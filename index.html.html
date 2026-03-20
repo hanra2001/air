@@ -55,12 +55,19 @@
         .hero-content { position: relative; z-index: 10; color: white; width: 100%; max-width: 850px; }
         .hero-tag { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 20px; display: block; letter-spacing: 0.2em; }
         .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 25px; line-height: 1.15; }
+        
         .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn { padding: 20px 45px; border-radius: 60px; font-weight: 700; text-decoration: none; font-size: 1.1rem; transition: var(--transition); border: none; cursor: pointer; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 25px rgba(0,102,255,0.2); }
         .btn-primary:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,102,255,0.4); }
         .btn-outline { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(5px); }
         .btn-outline:hover { background: white; color: var(--navy); transform: translateY(-10px); }
+
+        .show-mobile { display: none !important; }
+        @media (max-width: 768px) {
+            .show-pc { display: none !important; }
+            .show-mobile { display: inline-block !important; }
+        }
 
         /* --- 1. 청소효과 --- */
         section { padding: 120px 20px; max-width: 1200px; margin: 0 auto; }
@@ -73,14 +80,18 @@
         .effect-card .material-symbols-outlined { font-size: 4rem; color: var(--primary); margin-bottom: 30px; transition: var(--transition); }
         .effect-card:hover .material-symbols-outlined { transform: scale(1.2) rotate(-5deg); }
 
-        /* --- 2. 프리미엄 케어 --- */
+        /* --- 2. 프리미엄 케어 (아이콘 크기 확대 적용) --- */
         .premium-container { background: var(--navy); max-width: 100%; padding: 120px 0; color: white; }
         .premium-container .section-header h2 { color: white; }
         .step-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .step-box { text-align: center; cursor: pointer; }
         .step-icon-wrap { width: 100px; height: 100px; background: rgba(255,255,255,0.05); border-radius: 35px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; transition: var(--transition); border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* 아이콘 폰트 크기 확대: 2.8rem -> 4rem */
+        .step-icon-wrap .material-symbols-outlined { font-size: 4rem; color: var(--primary); transition: var(--transition); }
+        
         .step-box:hover .step-icon-wrap { background: var(--primary); transform: translateY(-15px) rotate(10deg); box-shadow: 0 15px 30px rgba(0,102,255,0.4); }
-        .step-box:hover .step-icon-wrap .material-symbols-outlined { color: white; }
+        .step-box:hover .step-icon-wrap .material-symbols-outlined { color: white; transform: scale(1.1); }
         .step-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
 
         /* --- 3. 고객 후기 --- */
@@ -117,6 +128,8 @@
             .review-card { width: 320px; flex-direction: column; text-align: center; padding: 25px; }
             .review-img { width: 100%; height: 180px; }
             .ba-grid { grid-template-columns: 1fr; }
+            /* 모바일에서도 시원하게 아이콘 크기 유지 */
+            .step-icon-wrap .material-symbols-outlined { font-size: 3.2rem; }
         }
     </style>
 </head>
@@ -125,7 +138,7 @@
     <header>
         <div class="nav-container">
             <a href="#">
-                <img src="https://postfiles.pstatic.net/MjAyNjAzMjBfMTI2/MDAxNzczOTUzMjczODY2._ay0Y0-5KtvbiIUpOWwlnS0eJCmKZndS1-rsSsmjifkg.N22HJxHAZODYbSCJitJWgjNCn8xsd_0SAVwMsNlHsBwg.PNG/%EB%A1%9C%EA%B3%A04-2_-_%EA%B0%80%EB%A1%9C.png?type=w773" alt="맑은숨 로고" class="logo-img">
+                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_264%2F1773996163036mxypn_PNG%2F%25B7%25CE%25B0%25ED4-2_-_%25B0%25A1%25B7%25CE.png" alt="맑은숨 로고" class="logo-img">
             </a>
             <div class="nav-links">
                 <a href="#effect">청소효과</a>
@@ -144,8 +157,9 @@
             <h1>가족의 건강을 위한<br>가장 깨끗한 맑은 숨</h1>
             <p>99.9% 완벽 살균으로 공기의 가치를 증명합니다.</p>
             <div class="btn-group">
-                <a href="tel:010-4836-6436" class="btn btn-primary">무료 견적 받기</a>
-                <a href="#review" class="btn btn-outline">상담 예약하기</a>
+                <a href="https://map.naver.com/p/entry/place/2050970162?c=15.00,0,0,0,dh&placePath=/home?fromPanelNum=1&additionalHeight=76&timestamp=202603201545&locale=ko&svcName=map_pcv5&from=map&fromPanelNum=1" target="_blank" class="btn btn-primary show-pc">무료 견적 받기</a>
+                <a href="tel:010-4836-6436" class="btn btn-primary show-mobile">무료 견적 받기</a>
+                <a href="https://open.kakao.com/o/s5ykrdmi" target="_blank" class="btn btn-outline">상담 예약하기</a>
             </div>
         </div>
     </div>
@@ -175,7 +189,7 @@
         </div>
     </section>
 
-    <!-- 2. 프리미엄 케어 -->
+    <!-- 2. 프리미엄 케어 (아이콘 크기 확대) -->
     <div class="premium-container" id="premium">
         <div class="section-header" data-aos="fade-up">
             <h2>맑은숨 프리미엄 7단계 케어</h2>
@@ -212,33 +226,31 @@
                 <div class="review-content">
                     <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
                     <h4>"아이가 있는 집이라면 필수예요"</h4>
-                    <p>친환경 살균 세제와 스팀 공정을 직접 눈으로 보니 안심이 됐습니다. 공기가 상쾌해졌어요.</p>
+                    <p>친환경 살균 세제와 스팀 공정을 직접 눈으로 보니 안심이 됐습니다. 진작 부를 걸 그랬습니다.</p>
                 </div>
             </div>
-            <!-- 학원 에어컨 후기 (이미지 교체됨) -->
             <div class="review-card">
-                <img src="https://postfiles.pstatic.net/MjAyNjAzMjBfMjIy/MDAxNzczOTU1MTA5NTQx.lqseJmkaI9EQTD9o_zt-LEsK2VtPhD2JEFtH9x7O1BAg.oiz8gWo_08qvw2XB4q5hXxaZ6IOssmfpP1X_JFcL3xIg.JPEG/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_18-3-2026_23398_search.naver.com.jpeg?type=w773" class="review-img">
+                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_17%2F17740040717932v97D_JPEG%2F%25C7%25D0%25BF%25F8.jpeg" class="review-img">
                 <div class="review-content">
                     <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
                     <h4>"학원 에어컨 전문성은 여기가 최고"</h4>
                     <p>대기업 수준의 체계적인 관리에 감동했어요. 내년에도 꼭 다시 맡길 예정입니다.</p>
                 </div>
             </div>
-            <!-- 루프용 복제본 -->
             <div class="review-card">
                 <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260319_91%2F1773901321397LphAg_JPEG%2F7.jpg" class="review-img">
                 <div class="review-content">
                     <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
-                    <h4>"부모님 댁 에어컨이 새것이 되었습니다"</h4>
-                    <p>기사님이 정말 친절하셨어요. 팬 안쪽까지 완전히 분해해서 보여주시니 신뢰가 갑니다.</p>
+                    <h4>"귀찮아서 미루다 큰맘 먹고 불렀는데 신세계네요"</h4>
+                    <p>에어컨 켤 때마다 냄새 나서 찝찝했는데, 뜯어보니 충격받았어요. 세척 과정 보여주시니까 속이 다 시원합니다.</p>
                 </div>
             </div>
             <div class="review-card">
-                <img src="https://postfiles.pstatic.net/MjAyNjAzMjBfMjIy/MDAxNzczOTU1MTA5NTQx.lqseJmkaI9EQTD9o_zt-LEsK2VtPhD2JEFtH9x7O1BAg.oiz8gWo_08qvw2XB4q5hXxaZ6IOssmfpP1X_JFcL3xIg.JPEG/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_18-3-2026_23398_search.naver.com.jpeg?type=w773" class="review-img">
+                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_17%2F17740040717932v97D_JPEG%2F%25C7%25D0%25BF%25F8.jpeg" class="review-img">
                 <div class="review-content">
                     <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
-                    <h4>"학원 에어컨 전문성은 여기가 최고"</h4>
-                    <p>대기업 수준의 체계적인 관리에 감동했어요. 내년에도 꼭 다시 맡길 예정입니다.</p>
+                    <h4>"작년에 싼데 맡겼다가 대충 하고 가서 후회했는데, 여긴 확실히 다르네요"</h4>
+                    <p>업체가 너무 많아 고민하다 선택했는데, 역시 전문가는 다르구나 싶었어요. 비용 아깝지 않네요.</p>
                 </div>
             </div>
         </div>
@@ -253,19 +265,19 @@
         <div class="ba-grid">
             <div class="ba-card" data-aos="fade-up">
                 <div class="ba-img-wrap">
-                    <img src="https://postfiles.pstatic.net/MjAyNjAzMjBfMjMy/MDAxNzczOTU1MDA2ODMw.I1AilgHnLj8eA6_Ab1f_ccAEEs9rAMG2YZBOFebEm6cg.iO4VESdAl1M4iw-NrPJAZcSN93bvTFB2mr0YFHVmBZAg.JPEG/KakaoTalk_20260319_200615724_02.jpg?type=w773" class="ba-img">
+                    <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_3%2F1773999658645S71hD_JPEG%2F%25B3%25C3%25B0%25A2.jpg" class="ba-img">
                 </div>
                 <div class="ba-info"><h4>냉각핀 정밀 세척</h4><p>고압으로 오염물을 완벽 제거</p></div>
             </div>
             <div class="ba-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="ba-img-wrap">
-                    <img src="https://postfiles.pstatic.net/MjAyNjAzMjBfNDAg/MDAxNzczOTU1MDEyNzEz.Qhq1QqTYe8d70qVTlETKgRhE4FibbNcSTg3H3q5AKcsg.IVeOp97CdsxPBE4Q9_8KkTyBeZvhgWpHOrM2eQ8AjJMg.JPEG/KakaoTalk_20260319_200615724_03.jpg?type=w773" class="ba-img">
+                    <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_144%2F1773999965301Uw9Q6_JPEG%2F20260320_184544_1.jpg" class="ba-img">
                 </div>
                 <div class="ba-info"><h4>송풍팬 곰팡이 박멸</h4><p>보이지 않는 곳의 세균까지 심층 살균</p></div>
             </div>
             <div class="ba-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="ba-img-wrap">
-                    <img src="https://postfiles.pstatic.net/MjAyNjAzMjBfMzEg/MDAxNzczOTU1MDM4MjY0.z7bjGHeUz5Kyt3OkYQeIUddQ1SNNmOQTkHN218K5tLcg.2ka1WeBoS5jKGx2xeyvBukrzaLkjnnqyXShW4OfNO4wg.JPEG/KakaoTalk_20260319_200615724_05.jpg?type=w773" class="ba-img">
+                    <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_289%2F17740030090711k7fO_JPEG%2F%25C4%25C9%25BE%25EE.jpg" class="ba-img">
                 </div>
                 <div class="ba-info"><h4>부품별 딥 클리닝</h4><p>분해 후 구석구석 정성스럽게 관리</p></div>
             </div>
@@ -275,8 +287,8 @@
     <!-- Footer -->
     <footer>
         <div class="footer-btns">
-            <a href="#" class="btn-f btn-naver">네이버 예약 바로가기</a>
-            <a href="#" class="btn-f btn-kakao">카카오톡 상담하기</a>
+            <a href="https://map.naver.com/p/entry/place/2050970162?c=15.00,0,0,0,dh&placePath=/home?fromPanelNum=1&additionalHeight=76&timestamp=202603201545&locale=ko&svcName=map_pcv5&from=map&fromPanelNum=1" target="_blank" class="btn-f btn-naver">네이버 예약 바로가기</a>
+            <a href="https://open.kakao.com/o/s5ykrdmi" target="_blank" class="btn-f btn-kakao">카카오톡 상담하기</a>
         </div>
         <div class="footer-info">
             <h2 style="color:var(--navy); font-weight:800; font-size:1.8rem; margin-bottom:20px;">맑은숨 에어컨 케어</h2>
