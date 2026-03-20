@@ -80,26 +80,33 @@
         .effect-card .material-symbols-outlined { font-size: 4rem; color: var(--primary); margin-bottom: 30px; transition: var(--transition); }
         .effect-card:hover .material-symbols-outlined { transform: scale(1.2) rotate(-5deg); }
 
-        /* --- 2. 프리미엄 케어 (아이콘 크기 확대 적용) --- */
+        /* --- 2. 프리미엄 케어 --- */
         .premium-container { background: var(--navy); max-width: 100%; padding: 120px 0; color: white; }
         .premium-container .section-header h2 { color: white; }
         .step-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .step-box { text-align: center; cursor: pointer; }
         .step-icon-wrap { width: 100px; height: 100px; background: rgba(255,255,255,0.05); border-radius: 35px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; transition: var(--transition); border: 1px solid rgba(255,255,255,0.1); }
-        
-        /* 아이콘 폰트 크기 확대: 2.8rem -> 4rem */
         .step-icon-wrap .material-symbols-outlined { font-size: 4rem; color: var(--primary); transition: var(--transition); }
-        
         .step-box:hover .step-icon-wrap { background: var(--primary); transform: translateY(-15px) rotate(10deg); box-shadow: 0 15px 30px rgba(0,102,255,0.4); }
         .step-box:hover .step-icon-wrap .material-symbols-outlined { color: white; transform: scale(1.1); }
         .step-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
 
-        /* --- 3. 고객 후기 --- */
+        /* --- 3. 고객 후기 (기기별 인터랙션 차등 적용) --- */
         .review-wrapper { padding: 100px 0; overflow: hidden; background: #fff; position: relative; }
         .review-track { display: flex; gap: 30px; width: max-content; animation: scrollLeft 45s linear infinite; padding: 20px 0; }
-        .review-track:hover { animation-play-state: paused; }
+        
+        /* PC에서만 마우스 올리면 멈춤 기능 활성화 */
+        @media (hover: hover) {
+            .review-track:hover { animation-play-state: paused; }
+        }
+
         .review-card { background: #fff; border: 1px solid #eee; padding: 35px; border-radius: 35px; display: flex; align-items: center; gap: 25px; width: 550px; flex-shrink: 0; transition: var(--transition); }
-        .review-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        
+        /* PC에서만 사진 확대 효과 활성화 */
+        @media (hover: hover) {
+            .review-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        }
+        
         .review-img { width: 140px; height: 140px; border-radius: 20px; object-fit: cover; flex-shrink: 0; }
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -128,7 +135,6 @@
             .review-card { width: 320px; flex-direction: column; text-align: center; padding: 25px; }
             .review-img { width: 100%; height: 180px; }
             .ba-grid { grid-template-columns: 1fr; }
-            /* 모바일에서도 시원하게 아이콘 크기 유지 */
             .step-icon-wrap .material-symbols-outlined { font-size: 3.2rem; }
         }
     </style>
@@ -189,7 +195,7 @@
         </div>
     </section>
 
-    <!-- 2. 프리미엄 케어 (아이콘 크기 확대) -->
+    <!-- 2. 프리미엄 케어 -->
     <div class="premium-container" id="premium">
         <div class="section-header" data-aos="fade-up">
             <h2>맑은숨 프리미엄 7단계 케어</h2>
@@ -213,6 +219,7 @@
             <p>만족도 4.9점, 실제 이용 고객님이 전하는 리얼 보이스</p>
         </div>
         <div class="review-track">
+            <!-- 후기 1 -->
             <div class="review-card">
                 <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260319_91%2F1773901321397LphAg_JPEG%2F7.jpg" class="review-img">
                 <div class="review-content">
@@ -221,6 +228,7 @@
                     <p>기사님이 정말 친절하셨어요. 팬 안쪽까지 완전히 분해해서 보여주시니 신뢰가 갑니다.</p>
                 </div>
             </div>
+            <!-- 후기 2 -->
             <div class="review-card">
                 <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260319_298%2F1773901321412DD6an_JPEG%2F9.jpg" class="review-img">
                 <div class="review-content">
@@ -229,6 +237,7 @@
                     <p>친환경 살균 세제와 스팀 공정을 직접 눈으로 보니 안심이 됐습니다. 진작 부를 걸 그랬습니다.</p>
                 </div>
             </div>
+            <!-- 후기 3 -->
             <div class="review-card">
                 <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_17%2F17740040717932v97D_JPEG%2F%25C7%25D0%25BF%25F8.jpeg" class="review-img">
                 <div class="review-content">
@@ -237,6 +246,7 @@
                     <p>대기업 수준의 체계적인 관리에 감동했어요. 내년에도 꼭 다시 맡길 예정입니다.</p>
                 </div>
             </div>
+            <!-- 후기 4 -->
             <div class="review-card">
                 <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260304_213%2F1772591367161IoLXE_JPEG%2FKakaoTalk_20260122_135248904_01.jpg" class="review-img">
                 <div class="review-content">
@@ -245,12 +255,22 @@
                     <p>에어컨 켤 때마다 냄새 나서 찝찝했는데, 뜯어보니 충격받았어요. 세척 과정 보여주시니까 속이 다 시원합니다.</p>
                 </div>
             </div>
+            <!-- 후기 5 -->
             <div class="review-card">
                 <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260304_5%2F1772591365450n6bYo_PNG%2FKakaoTalk_20260124_215357238.png" class="review-img">
                 <div class="review-content">
                     <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
-                    <h4>"작년에 싼데 맡겼다가 대충 하고 가서 후회했는데, 여긴 확실히 다르네요"</h4>
-                    <p>업체가 너무 많아 고민하다 선택했는데, 역시 전문가는 다르구나 싶었어요. 비용 아깝지 않네요.</p>
+                    <h4>"작년에 싼데 맡겼다가 후회했는데, 여긴 확실히 다르네요"</h4>
+                    <p>역시 전문가는 다르구나 싶었어요. 비용 아깝지 않네요.</p>
+                </div>
+            </div>
+            <!-- 루프용 복제본 -->
+            <div class="review-card">
+                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260319_91%2F1773901321397LphAg_JPEG%2F7.jpg" class="review-img">
+                <div class="review-content">
+                    <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
+                    <h4>"부모님 댁 에어컨이 새것이 되었습니다"</h4>
+                    <p>기사님이 정말 친절하셨어요. 팬 안쪽까지 완전히 분해해서 보여주시니 신뢰가 갑니다.</p>
                 </div>
             </div>
         </div>
