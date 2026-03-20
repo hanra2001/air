@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>맑은숨 | 프리미엄 에어컨 케어</title>
+
+    <!-- [추가] 카카오톡/SNS 링크 공유 미리보기 설정 (오픈 그래프) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="맑은숨 | 프리미엄 에어컨 케어">
+    <meta property="og:description" content="가족의 건강을 위한 가장 깨끗한 숨결, 99.9% 완벽 살균 프리미엄 세척 서비스">
+    <meta property="og:image" content="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_264%2F1773996163036mxypn_PNG%2F%25B7%25CE%25B0%25ED4-2_-_%25B0%25A1%25B7%25CE.png">
+    <meta property="og:url" content="본인의홈페이지주소.com"> <!-- 실제 홈페이지 주소가 생기면 여기에 넣어주세요 -->
+
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -77,8 +85,9 @@
         .effect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .effect-card { padding: 60px 40px; border-radius: 40px; background: var(--bg-light); transition: var(--transition); text-align: center; border: 1px solid transparent; }
         .effect-card:hover { background: white; transform: translateY(-20px); box-shadow: 0 40px 80px rgba(0,0,0,0.08); border-color: var(--primary); }
-        .effect-card .material-symbols-outlined { font-size: 4rem; color: var(--primary); margin-bottom: 30px; transition: var(--transition); }
-        .effect-card:hover .material-symbols-outlined { transform: scale(1.2) rotate(-5deg); }
+        
+        .icon-3d { width: 150px; height: 150px; margin-bottom: 25px; object-fit: contain; transition: var(--transition); }
+        .effect-card:hover .icon-3d { transform: scale(1.1) rotate(5deg); }
 
         /* --- 2. 프리미엄 케어 --- */
         .premium-container { background: var(--navy); max-width: 100%; padding: 120px 0; color: white; }
@@ -91,22 +100,12 @@
         .step-box:hover .step-icon-wrap .material-symbols-outlined { color: white; transform: scale(1.1); }
         .step-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
 
-        /* --- 3. 고객 후기 (기기별 인터랙션 차등 적용) --- */
+        /* --- 3. 고객 후기 --- */
         .review-wrapper { padding: 100px 0; overflow: hidden; background: #fff; position: relative; }
         .review-track { display: flex; gap: 30px; width: max-content; animation: scrollLeft 45s linear infinite; padding: 20px 0; }
-        
-        /* PC에서만 마우스 올리면 멈춤 기능 활성화 */
-        @media (hover: hover) {
-            .review-track:hover { animation-play-state: paused; }
-        }
-
+        @media (hover: hover) { .review-track:hover { animation-play-state: paused; } }
         .review-card { background: #fff; border: 1px solid #eee; padding: 35px; border-radius: 35px; display: flex; align-items: center; gap: 25px; width: 550px; flex-shrink: 0; transition: var(--transition); }
-        
-        /* PC에서만 사진 확대 효과 활성화 */
-        @media (hover: hover) {
-            .review-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        }
-        
+        @media (hover: hover) { .review-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); } }
         .review-img { width: 140px; height: 140px; border-radius: 20px; object-fit: cover; flex-shrink: 0; }
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -136,6 +135,7 @@
             .review-img { width: 100%; height: 180px; }
             .ba-grid { grid-template-columns: 1fr; }
             .step-icon-wrap .material-symbols-outlined { font-size: 3.2rem; }
+            .icon-3d { width: 110px; height: 110px; }
         }
     </style>
 </head>
@@ -155,7 +155,7 @@
         </div>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <div class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content" data-aos="fade-up">
@@ -178,17 +178,17 @@
         </div>
         <div class="effect-grid">
             <div class="effect-card" data-aos="fade-up">
-                <span class="material-symbols-outlined">health_and_safety</span>
+                <img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Leaf%20fluttering%20in%20wind/3D/leaf_fluttering_in_wind_3d.png" alt="무균의 숨결" class="icon-3d">
                 <h3>무균의 숨결</h3>
                 <p>에어컨 내부 곰팡이와 세균을 99.9% 완벽 제거하여 호흡기 질환의 원인을 해결합니다.</p>
             </div>
             <div class="effect-card" data-aos="fade-up" data-aos-delay="100">
-                <span class="material-symbols-outlined">bolt</span>
+                <img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/High%20voltage/3D/high_voltage_3d.png" alt="에너지 효율" class="icon-3d">
                 <h3>에너지 효율 극대화</h3>
                 <p>냉방 효율을 회복시켜 더 시원한 바람과 함께 전기 요금 부담을 획기적으로 낮춥니다.</p>
             </div>
             <div class="effect-card" data-aos="fade-up" data-aos-delay="200">
-                <span class="material-symbols-outlined">diamond</span>
+                <img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Shield/3D/shield_3d.png" alt="가전 보호" class="icon-3d">
                 <h3>프리미엄 가전 보호</h3>
                 <p>정밀 세척으로 부품 부식을 방지하여 에어컨의 기기 수명을 최대로 연장합니다.</p>
             </div>
@@ -252,7 +252,7 @@
                 <div class="review-content">
                     <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
                     <h4>"귀찮아서 미루다 큰맘 먹고 불렀는데 신세계네요"</h4>
-                    <p>에어컨 켤 때마다 냄새 나서 찝찝했는데, 뜯어보니 충격받았어요. 세척 과정 보여주시니까 속이 다 시원합니다.</p>
+                    <p>에어컨 켤 때마다 냄새 나서 찝찝했는데, 뜯어보니 충격받았어요. 속이 다 시원합니다.</p>
                 </div>
             </div>
             <!-- 후기 5 -->
@@ -260,7 +260,7 @@
                 <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260304_5%2F1772591365450n6bYo_PNG%2FKakaoTalk_20260124_215357238.png" class="review-img">
                 <div class="review-content">
                     <div style="color:#FFD700; font-weight:800; margin-bottom:10px;">★★★★★ 5.0</div>
-                    <h4>"작년에 싼데 맡겼다가 후회했는데, 여긴 확실히 다르네요"</h4>
+                    <h4>"작년에 싼데 맡겼다가 후회했는데, 여기가 최고네요"</h4>
                     <p>역시 전문가는 다르구나 싶었어요. 비용 아깝지 않네요.</p>
                 </div>
             </div>
