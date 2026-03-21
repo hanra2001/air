@@ -105,7 +105,7 @@ const REVIEWS = [
 
 const BEFORE_AFTER = [
   {
-    img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_3%2F1773999658645S71hD_JPEG%2F%25B3%25C3%25B0%25A2.jpg",
+    img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260321_151%2F17740795969251ezmD_JPEG%2F%25B3%25C3%25B0%25A2.jpg",
     title: "냉각핀 정밀 세척",
     desc: "고압으로 오염물을 완벽 제거",
     delay: 0
