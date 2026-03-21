@@ -18,7 +18,10 @@ import {
   ExternalLink,
   X,
   Users,
-  MapPin
+  MapPin,
+  Menu,
+  ChevronUp,
+  ChevronDown
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence } from "motion/react";
@@ -67,30 +70,35 @@ const REVIEWS = [
     img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260319_91%2F1773901321397LphAg_JPEG%2F7.jpg",
     title: "부모님 댁 에어컨이 새것이 되었습니다",
     content: "기사님이 정말 친절하셨어요. 팬 안쪽까지 완전히 분해해서 보여주시니 신뢰가 갑니다.",
+    author: "ykjo****님",
     rating: 5.0
   },
   {
     img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260319_298%2F1773901321412DD6an_JPEG%2F9.jpg",
     title: "아이가 있는 집이라면 필수예요",
     content: "친환경 살균 세제와 스팀 공정을 직접 눈으로 보니 안심이 됐습니다. 진작 부를 걸 그랬습니다.",
+    author: "love****님",
     rating: 5.0
   },
   {
     img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_17%2F17740040717932v97D_JPEG%2F%25C7%25D0%25BF%25F8.jpeg",
     title: "학원 에어컨 전문성은 여기가 최고",
     content: "대기업 수준의 체계적인 관리에 감동했어요. 내년에도 꼭 다시 맡길 예정입니다.",
+    author: "educ****님",
     rating: 5.0
   },
   {
     img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260304_213%2F1772591367161IoLXE_JPEG%2FKakaoTalk_20260122_135248904_01.jpg",
     title: "귀찮아서 미루다 큰맘 먹고 불렀는데 신세계네요",
     content: "에어컨 켤 때마다 냄새 나서 찝찝했는데, 뜯어보니 충격받았어요. 속이 다 시원합니다.",
+    author: "blue****님",
     rating: 5.0
   },
   {
     img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260304_5%2F1772591365450n6bYo_PNG%2FKakaoTalk_20260124_215357238.png",
     title: "작년에 싼데 맡겼다가 후회했는데, 여기가 최고네요",
     content: "역시 전문가는 다르구나 싶었어요. 비용 아깝지 않네요.",
+    author: "best****님",
     rating: 5.0
   }
 ];
@@ -133,17 +141,17 @@ const CompanyIntro = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 px-5 max-w-7xl mx-auto overflow-hidden">
+    <div className="pt-20 md:pt-32 pb-16 md:pb-24 px-5 max-w-7xl mx-auto overflow-hidden">
       {/* Hero Section */}
       <motion.div 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="text-center mb-24"
+        className="text-center mb-16 md:mb-24"
       >
-        <motion.span variants={itemVariants} className="text-primary font-bold tracking-[0.3em] uppercase block mb-4 text-sm">CORPORATE OVERVIEW</motion.span>
-        <motion.h2 variants={itemVariants} className="text-4xl md:text-7xl font-extrabold text-navy mb-8 tracking-tighter leading-[1.1]">
+        <motion.span variants={itemVariants} className="text-primary font-bold tracking-[0.3em] uppercase block mb-4 text-xs md:text-sm">CORPORATE OVERVIEW</motion.span>
+        <motion.h2 variants={itemVariants} className="text-3xl md:text-7xl font-extrabold text-navy mb-6 md:mb-8 tracking-tighter leading-[1.2] md:leading-[1.1]">
           우리 가족의 건강한 숨결을 위한<br />
           <span className="text-primary relative inline-block">
             따뜻한 약속
@@ -151,18 +159,18 @@ const CompanyIntro = () => {
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute bottom-2 left-0 h-3 bg-primary/20 -z-10"
+              className="absolute bottom-1 md:bottom-2 left-0 h-2 md:h-3 bg-primary/20 -z-10"
             />
           </span>, 맑은숨
         </motion.h2>
-        <motion.p variants={itemVariants} className="text-text-sub text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed font-medium">
+        <motion.p variants={itemVariants} className="text-text-sub text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed font-medium">
           맑은숨은 내 집을 케어하는 마음으로 정성을 다해<br className="hidden md:block" /> 
           고객님께 쾌적하고 맑은 공기를 선물하는 든든한 파트너입니다.
         </motion.p>
       </motion.div>
 
       {/* Company Building & Vision Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-40">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center mb-24 md:mb-40">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -171,20 +179,20 @@ const CompanyIntro = () => {
           className="relative"
         >
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl" />
-          <div className="relative rounded-[40px] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100">
+          <div className="relative rounded-[30px] md:rounded-[40px] overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] md:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100">
             <img 
               src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1200" 
               alt="맑은숨 에어케어 센터" 
-              className="w-full h-[650px] object-cover"
+              className="w-full h-[350px] md:h-[650px] object-cover"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
-            <div className="absolute bottom-12 left-12 text-white">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-1px bg-primary" />
-                <span className="text-sm font-bold tracking-widest uppercase">Our Workspace</span>
+            <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 text-white">
+              <div className="flex items-center gap-3 mb-3 md:mb-4">
+                <div className="w-8 md:w-12 h-1px bg-primary" />
+                <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Our Workspace</span>
               </div>
-              <h4 className="text-4xl font-bold mb-2">맑은숨 에어케어 센터</h4>
+              <h4 className="text-2xl md:text-4xl font-bold mb-2">맑은숨 에어케어 센터</h4>
             </div>
           </div>
         </motion.div>
@@ -194,16 +202,16 @@ const CompanyIntro = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="space-y-12"
+          className="space-y-10 md:space-y-12"
         >
           <motion.div variants={itemVariants}>
-            <h3 className="text-3xl font-extrabold text-navy mb-6 flex items-center gap-4">
-              <span className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-navy mb-4 md:mb-6 flex items-center gap-4">
+              <span className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
                 <ShieldCheck size={24} />
               </span>
               기업 철학 (Philosophy)
             </h3>
-            <p className="text-text-sub text-lg leading-relaxed pl-14">
+            <p className="text-text-sub text-base md:text-lg leading-relaxed md:pl-14">
               맑은숨은 '정직'과 '신뢰'를 기업의 최우선 가치로 삼습니다. 
               단순한 이익 창출을 넘어, 우리 사회의 모든 공간에 맑은 공기를 전파하여 
               삶의 질을 향상시키는 사회적 책임을 다하고 있습니다.
@@ -211,43 +219,43 @@ const CompanyIntro = () => {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <h3 className="text-3xl font-extrabold text-navy mb-6 flex items-center gap-4">
-              <span className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-navy mb-4 md:mb-6 flex items-center gap-4">
+              <span className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
                 <CheckCircle size={24} />
               </span>
               핵심 역량 (Core Competence)
             </h3>
-            <div className="pl-14 space-y-4">
+            <div className="md:pl-14 space-y-4">
               <div className="flex items-start gap-3">
                 <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                <p className="text-text-sub text-lg">수도권 전역의 체계적인 서비스 네트워크 구축</p>
+                <p className="text-text-sub text-base md:text-lg">수도권 전역의 체계적인 서비스 네트워크 구축</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                <p className="text-text-sub text-lg">자체 기술 교육 센터 운영을 통한 전문가 양성</p>
+                <p className="text-text-sub text-base md:text-lg">자체 기술 교육 센터 운영을 통한 전문가 양성</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                <p className="text-text-sub text-lg">최첨단 정밀 세척 장비 및 친환경 솔루션 보유</p>
+                <p className="text-text-sub text-base md:text-lg">최첨단 정밀 세척 장비 및 친환경 솔루션 보유</p>
               </div>
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="pt-6">
-            <div className="bg-bg-light p-8 rounded-[32px] border border-gray-100 relative">
+          <motion.div variants={itemVariants} className="pt-4 md:pt-6">
+            <div className="bg-bg-light p-6 md:p-8 rounded-[24px] md:rounded-[32px] border border-gray-100 relative">
               <div className="absolute -top-4 -left-4 text-primary opacity-20">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3L22.017 3V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM2.01697 21L2.01697 18C2.01697 16.8954 2.9124 16 4.01697 16H7.01697C7.56925 16 8.01697 15.5523 8.01697 15V9C8.01697 8.44772 7.56925 8 7.01697 8H4.01697C2.9124 8 2.01697 7.10457 2.01697 6V3L10.017 3V15C10.017 18.3137 7.33068 21 4.01697 21H2.01697Z" /></svg>
+                <svg width="32" height="32" md:width="40" md:height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3L22.017 3V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM2.01697 21L2.01697 18C2.01697 16.8954 2.9124 16 4.01697 16H7.01697C7.56925 16 8.01697 15.5523 8.01697 15V9C8.01697 8.44772 7.56925 8 7.01697 8H4.01697C2.9124 8 2.01697 7.10457 2.01697 6V3L10.017 3V15C10.017 18.3137 7.33068 21 4.01697 21H2.01697Z" /></svg>
               </div>
-              <p className="text-navy font-bold text-xl italic leading-relaxed mb-6">
+              <p className="text-navy font-bold text-lg md:text-xl italic leading-relaxed mb-6">
                 "우리는 단순히 먼지를 닦아내는 것이 아니라, 고객님의 소중한 가족이 마시는 공기를 디자인한다는 사명감으로 임합니다."
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-200 overflow-hidden">
                   <img src="https://picsum.photos/seed/ceo/100/100" alt="CEO" className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <p className="font-bold text-navy">이용훈</p>
-                  <p className="text-sm text-text-sub">맑은숨 대표이사</p>
+                  <p className="font-bold text-navy text-sm md:text-base">이용훈</p>
+                  <p className="text-xs md:text-sm text-text-sub">맑은숨 대표이사</p>
                 </div>
               </div>
             </div>
@@ -256,12 +264,12 @@ const CompanyIntro = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-40">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-24 md:mb-40">
         {[
-          { label: "누적 서비스 건수", value: "50,000+", icon: <CheckCircle className="text-primary" /> },
-          { label: "고객 만족도", value: "99.2%", icon: <ShieldCheck className="text-primary" /> },
-          { label: "보유 전문가", value: "120명+", icon: <Users className="text-primary" /> },
-          { label: "서비스 지역", value: "수도권 전역", icon: <MapPin className="text-primary" /> }
+          { label: "누적 서비스 건수", value: "50,000+", icon: <CheckCircle className="text-primary" size={20} /> },
+          { label: "고객 만족도", value: "99.2%", icon: <ShieldCheck className="text-primary" size={20} /> },
+          { label: "보유 전문가", value: "120명+", icon: <Users className="text-primary" size={20} /> },
+          { label: "서비스 지역", value: "수도권 전역", icon: <MapPin className="text-primary" size={20} /> }
         ].map((stat, idx) => (
           <motion.div 
             key={idx}
@@ -269,11 +277,11 @@ const CompanyIntro = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="bg-white p-8 rounded-3xl shadow-sm border border-gray-50 text-center hover:shadow-xl transition-all duration-500"
+            className="bg-white p-5 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-50 text-center hover:shadow-xl transition-all duration-500"
           >
-            <div className="flex justify-center mb-4">{stat.icon}</div>
-            <div className="text-3xl font-black text-navy mb-2">{stat.value}</div>
-            <div className="text-text-sub font-bold text-sm">{stat.label}</div>
+            <div className="flex justify-center mb-3 md:mb-4">{stat.icon}</div>
+            <div className="text-xl md:text-3xl font-black text-navy mb-1 md:mb-2">{stat.value}</div>
+            <div className="text-text-sub font-bold text-[10px] md:text-sm">{stat.label}</div>
           </motion.div>
         ))}
       </div>
@@ -283,43 +291,43 @@ const CompanyIntro = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-navy rounded-[60px] p-12 md:p-24 text-white relative overflow-hidden"
+        className="bg-navy rounded-[32px] md:rounded-[60px] p-8 md:p-24 text-white relative overflow-hidden"
       >
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -mr-48 -mt-48" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -ml-32 -mb-32" />
         
         <div className="relative z-10">
-          <h3 className="text-3xl md:text-5xl font-extrabold mb-16 text-center tracking-tight">맑은숨의 3대 핵심 약속</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <h3 className="text-xl md:text-5xl font-extrabold mb-8 md:mb-16 text-center tracking-tight">맑은숨의 3대 핵심 약속</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12">
             <motion.div 
               whileHover={{ y: -15 }}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-[40px] transition-all duration-500 hover:bg-white/10"
+              className="bg-white/5 backdrop-blur-lg border border-white/10 p-6 md:p-10 rounded-[24px] md:rounded-[40px] transition-all duration-500 hover:bg-white/10"
             >
-              <div className="text-primary text-5xl font-black mb-6 opacity-50">01</div>
-              <h4 className="text-2xl font-bold mb-4">전문 자격증 보유</h4>
-              <p className="opacity-70 leading-relaxed">
+              <div className="text-primary text-3xl md:text-5xl font-black mb-2 md:mb-6 opacity-50">01</div>
+              <h4 className="text-lg md:text-2xl font-bold mb-2 md:mb-4">전문 자격증 보유</h4>
+              <p className="opacity-70 text-sm md:text-base leading-relaxed">
                 모든 현장 기사는 체계적인 전문 교육 과정을 이수한 전문가입니다. 
                 검증된 실력으로 최상의 결과를 보장합니다.
               </p>
             </motion.div>
             <motion.div 
               whileHover={{ y: -15 }}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-[40px] transition-all duration-500 hover:bg-white/10"
+              className="bg-white/5 backdrop-blur-lg border border-white/10 p-6 md:p-10 rounded-[24px] md:rounded-[40px] transition-all duration-500 hover:bg-white/10"
             >
-              <div className="text-primary text-5xl font-black mb-6 opacity-50">02</div>
-              <h4 className="text-2xl font-bold mb-4">완벽 보양 시스템</h4>
-              <p className="opacity-70 leading-relaxed">
+              <div className="text-primary text-3xl md:text-5xl font-black mb-2 md:mb-6 opacity-50">02</div>
+              <h4 className="text-lg md:text-2xl font-bold mb-2 md:mb-4">완벽 보양 시스템</h4>
+              <p className="opacity-70 text-sm md:text-base leading-relaxed">
                 작업 전 가구와 바닥을 완벽하게 보호하는 3중 보양 시스템을 적용합니다. 
                 청소 후에도 고객님의 공간은 그대로 유지됩니다.
               </p>
             </motion.div>
             <motion.div 
               whileHover={{ y: -15 }}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-[40px] transition-all duration-500 hover:bg-white/10"
+              className="bg-white/5 backdrop-blur-lg border border-white/10 p-6 md:p-10 rounded-[24px] md:rounded-[40px] transition-all duration-500 hover:bg-white/10"
             >
-              <div className="text-primary text-5xl font-black mb-6 opacity-50">03</div>
-              <h4 className="text-2xl font-bold mb-4">투명한 공정 확인</h4>
-              <p className="opacity-70 leading-relaxed">
+              <div className="text-primary text-3xl md:text-5xl font-black mb-2 md:mb-6 opacity-50">03</div>
+              <h4 className="text-lg md:text-2xl font-bold mb-2 md:mb-4">투명한 공정 확인</h4>
+              <p className="opacity-70 text-sm md:text-base leading-relaxed">
                 세척 전후의 상태를 실시간으로 공유하며, 모든 작업 과정을 투명하게 공개합니다. 
                 눈으로 확인하는 안심 케어를 경험하세요.
               </p>
@@ -394,16 +402,16 @@ const QuoteModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        className="relative bg-white w-full max-w-lg rounded-[40px] shadow-2xl overflow-hidden"
+        className="relative bg-white w-full max-w-lg rounded-[32px] md:rounded-[40px] shadow-2xl overflow-hidden max-h-[92vh] md:max-h-[90vh] flex flex-col"
       >
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 text-text-sub hover:text-navy transition-colors"
+          className="absolute top-4 right-4 md:top-6 md:right-6 p-2 text-text-sub hover:text-navy transition-colors z-50 bg-white/80 backdrop-blur-sm rounded-full"
         >
           <X size={24} />
         </button>
 
-        <div className="p-10">
+        <div className="p-6 md:p-10 overflow-y-auto">
           {!isSuccess ? (
             <>
               <div className="mb-8">
@@ -494,6 +502,7 @@ const QuoteModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 export default function App() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState<"home" | "about">("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -526,7 +535,7 @@ export default function App() {
             className="block transition-all duration-700 hover:scale-105"
           >
             <img 
-              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260320_264%2F1773996163036mxypn_PNG%2F%25B7%25CE%25B0%25ED4-2_-_%25B0%25A1%25B7%25CE.png" 
+              src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20260321_212%2F1774079901049p0166_PNG%2F%25B7%25CE%25B0%25ED4-2_-_%25B0%25A1%25B7%25CE.png" 
               alt="맑은숨 로고" 
               className="h-10 md:h-12 transition-all duration-700 brightness-100"
               referrerPolicy="no-referrer"
@@ -566,7 +575,79 @@ export default function App() {
               무료 견적 받기
             </button>
           </nav>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden p-2 text-navy hover:text-primary transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-0 z-[999] bg-white md:hidden pt-24 px-8"
+            >
+              <button 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="absolute top-6 right-5 p-2 text-navy hover:text-primary transition-colors"
+                aria-label="메뉴 닫기"
+              >
+                <X size={32} />
+              </button>
+              <div className="flex flex-col space-y-8">
+                {NAV_LINKS.map((link) => (
+                  <a 
+                    key={link.name} 
+                    href={link.href} 
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      if (link.href === "#about") {
+                        setCurrentPage("about");
+                        window.scrollTo(0, 0);
+                      } else if (currentPage === "about") {
+                        setCurrentPage("home");
+                        setTimeout(() => {
+                          const element = document.querySelector(link.href);
+                          element?.scrollIntoView({ behavior: "smooth" });
+                        }, 100);
+                      }
+                    }}
+                    className={`text-2xl font-bold tracking-tight transition-all duration-300 ${
+                      (link.href === "#about" && currentPage === "about") || (link.href !== "#about" && currentPage === "home")
+                        ? "text-primary" 
+                        : "text-navy"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <button 
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsQuoteModalOpen(true);
+                  }}
+                  className="w-full py-5 bg-primary text-white rounded-2xl font-bold text-xl shadow-lg hover:bg-navy transition-all duration-300"
+                >
+                  무료 견적 받기
+                </button>
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full py-4 text-text-sub font-medium text-lg border-t border-gray-100 mt-4"
+                >
+                  메뉴 닫기
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {currentPage === "home" ? (
@@ -588,23 +669,18 @@ export default function App() {
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
             <span className="text-sm font-bold tracking-tight">수도권 전지역 서비스 가능</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-[1.15]">
-            가족의 건강을 위한<br />가장 깨끗한 맑은 숨
+          <h1 className="text-[2.4rem] md:text-7xl font-extrabold mb-6 leading-[1.25] md:leading-[1.15] tracking-tighter break-keep">
+            가족의 건강을 위한<br />
+            가장 깨끗한 <span className="text-sky-400 drop-shadow-sm">맑은 숨</span>
           </h1>
           <p className="text-xl md:text-2xl mb-10 opacity-90">99.9% 완벽 살균으로 공기의 가치를 증명합니다.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <button 
               onClick={() => setIsQuoteModalOpen(true)}
-              className="hidden md:inline-block px-12 py-5 bg-primary text-white rounded-full font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="px-12 py-5 bg-primary text-white rounded-full font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center"
             >
               무료 견적 받기
             </button>
-            <a 
-              href="tel:01048366436"
-              className="md:hidden px-12 py-5 bg-primary text-white rounded-full font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center"
-            >
-              무료 견적 받기
-            </a>
             <a 
               href="https://open.kakao.com/o/s5ykrdmi" 
               target="_blank" 
@@ -624,8 +700,12 @@ export default function App() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-navy mb-5 tracking-tighter">청소 그 이상의 변화</h2>
-          <p className="text-text-sub text-lg">보이지 않는 곳의 위생이 당신의 일상을 바꿉니다.</p>
+          <h2 className="text-[2.2rem] md:text-5xl font-extrabold text-navy mb-5 tracking-tighter break-keep leading-[1.2]">
+            청소 그 <span className="text-primary">이상의 변화</span>
+          </h2>
+          <p className="text-text-sub text-base md:text-lg break-keep max-w-md mx-auto">
+            보이지 않는 곳의 위생이<br className="md:hidden" /> 당신의 일상을 바꿉니다
+          </p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -660,8 +740,12 @@ export default function App() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-5 tracking-tighter">맑은숨 프리미엄 7단계 케어</h2>
-            <p className="opacity-60 text-lg">청소 자격 기사가 선사하는 타협 없는 압도적 디테일</p>
+            <h2 className="text-[2.2rem] md:text-5xl font-extrabold mb-5 tracking-tighter break-keep leading-[1.2]">
+              맑은숨 프리미엄 <br className="md:hidden" /> <span className="text-sky-400">7단계 케어</span>
+            </h2>
+            <p className="opacity-70 text-base md:text-lg break-keep max-w-md mx-auto">
+              청소 자격 기사가 선사하는<br className="md:hidden" /> 타협 없는 압도적 디테일을 경험하세요
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 md:gap-8">
@@ -693,8 +777,12 @@ export default function App() {
           viewport={{ once: true }}
           className="text-center mb-16 px-5"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-navy mb-5 tracking-tighter">고객님의 이유 있는 선택</h2>
-          <p className="text-text-sub text-lg">만족도 4.9점, 실제 이용 고객님이 전하는 리얼 보이스</p>
+          <h2 className="text-[2.2rem] md:text-5xl font-extrabold text-navy mb-5 tracking-tighter break-keep leading-[1.2]">
+            고객님의 <br className="md:hidden" /> <span className="text-primary">이유 있는 선택</span>
+          </h2>
+          <p className="text-text-sub text-base md:text-lg break-keep max-w-2xl mx-auto">
+            만족도 4.9점, 실제 이용 고객님이 전하는<br className="md:hidden" /> 리얼 보이스를 확인하세요
+          </p>
         </motion.div>
 
         <div className="flex gap-8 w-max animate-scroll-left py-5">
@@ -715,7 +803,8 @@ export default function App() {
                   <span className="ml-2 text-sm font-extrabold">{review.rating.toFixed(1)}</span>
                 </div>
                 <h4 className="text-lg font-extrabold text-navy mb-2 leading-tight">"{review.title}"</h4>
-                <p className="text-text-sub text-sm leading-relaxed">{review.content}</p>
+                <p className="text-text-sub text-sm leading-relaxed mb-2">{review.content}</p>
+                <p className="text-text-sub text-xs font-medium opacity-60">({review.author})</p>
               </div>
             </div>
           ))}
@@ -768,21 +857,101 @@ export default function App() {
         <CompanyIntro />
       )}
 
+      {/* Floating Quick Menu (Desktop & Mobile) */}
+      <div className="fixed right-4 md:right-8 bottom-24 md:bottom-1/2 md:translate-y-1/2 z-[1500] flex flex-col gap-3 md:gap-4">
+        {/* Phone Call */}
+        <motion.a 
+          href="tel:01048366436"
+          whileHover={{ scale: 1.1, x: -5 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-12 h-12 md:w-16 md:h-16 bg-primary text-white rounded-2xl flex items-center justify-center shadow-xl group relative"
+        >
+          <Phone size={24} className="md:w-7 md:h-7" />
+          <span className="absolute right-full mr-4 px-3 py-1.5 bg-navy text-white text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden md:block">
+            전화 상담하기
+          </span>
+        </motion.a>
+
+        {/* KakaoTalk */}
+        <motion.a 
+          href="https://open.kakao.com/o/s5ykrdmi"
+          target="_blank"
+          whileHover={{ scale: 1.1, x: -5 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-12 h-12 md:w-16 md:h-16 bg-[#FEE500] text-[#191919] rounded-2xl flex items-center justify-center shadow-xl group relative"
+        >
+          <MessageCircle size={24} className="md:w-7 md:h-7" />
+          <span className="absolute right-full mr-4 px-3 py-1.5 bg-navy text-white text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden md:block">
+            카카오톡 문의
+          </span>
+        </motion.a>
+
+        {/* Naver Reservation */}
+        <motion.a 
+          href="https://map.naver.com/p/entry/place/2050970162"
+          target="_blank"
+          whileHover={{ scale: 1.1, x: -5 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-12 h-12 md:w-16 md:h-16 bg-[#03C75A] text-white rounded-2xl flex items-center justify-center shadow-xl group relative"
+        >
+          <ExternalLink size={24} className="md:w-7 md:h-7" />
+          <span className="absolute right-full mr-4 px-3 py-1.5 bg-navy text-white text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden md:block">
+            네이버 예약
+          </span>
+        </motion.a>
+
+        {/* Quick Quote (Modal Trigger) */}
+        <motion.button 
+          onClick={() => setIsQuoteModalOpen(true)}
+          whileHover={{ scale: 1.1, x: -5 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-12 h-12 md:w-16 md:h-16 bg-navy text-white rounded-2xl flex items-center justify-center shadow-xl group relative"
+        >
+          <SearchCheck size={24} className="md:w-7 md:h-7" />
+          <span className="absolute right-full mr-4 px-3 py-1.5 bg-navy text-white text-xs font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden md:block">
+            무료 견적 신청
+          </span>
+        </motion.button>
+
+        {/* Scroll Top/Bottom */}
+        <div className="flex flex-col gap-2 mt-2">
+          <motion.button 
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            whileHover={{ scale: 1.1, x: -3 }}
+            whileTap={{ scale: 0.9 }}
+            className="w-10 h-10 md:w-12 md:h-12 bg-white text-navy border border-gray-200 rounded-xl flex items-center justify-center shadow-lg group relative"
+            aria-label="맨 위로"
+          >
+            <ChevronUp size={20} className="md:w-6 md:h-6" />
+            <span className="absolute right-full mr-4 px-3 py-1 bg-navy text-white text-[10px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden md:block">
+              맨 위로
+            </span>
+          </motion.button>
+          <motion.button 
+            onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" })}
+            whileHover={{ scale: 1.1, x: -3 }}
+            whileTap={{ scale: 0.9 }}
+            className="w-10 h-10 md:w-12 md:h-12 bg-white text-navy border border-gray-200 rounded-xl flex items-center justify-center shadow-lg group relative"
+            aria-label="맨 아래로"
+          >
+            <ChevronDown size={20} className="md:w-6 md:h-6" />
+            <span className="absolute right-full mr-4 px-3 py-1 bg-navy text-white text-[10px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden md:block">
+              맨 아래로
+            </span>
+          </motion.button>
+        </div>
+      </div>
+
       {/* Footer */}
+
       <footer className="bg-[#f8f9fa] py-24 px-5 border-t border-gray-100 text-center">
         <div className="flex flex-wrap justify-center gap-5 mb-12">
           <button 
             onClick={() => setIsQuoteModalOpen(true)}
-            className="hidden md:flex items-center gap-2 px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:brightness-110 transition-all shadow-lg"
+            className="flex items-center gap-2 px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:brightness-110 transition-all shadow-lg"
           >
             무료 견적 신청하기 <SearchCheck size={18} />
           </button>
-          <a 
-            href="tel:01048366436"
-            className="md:hidden flex items-center gap-2 px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:brightness-110 transition-all shadow-lg"
-          >
-            무료 견적 신청하기 <SearchCheck size={18} />
-          </a>
           <a 
             href="https://map.naver.com/p/entry/place/2050970162" 
             target="_blank" 
@@ -802,8 +971,11 @@ export default function App() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-extrabold text-navy mb-5">맑은숨 에어컨 케어</h2>
           <div className="text-text-sub space-y-1">
-            <p className="font-bold text-navy mb-2">서비스 지역: 서울 전지역 | 경기 전지역 | 인천 전지역</p>
-            <p>대표 이용훈 | 사업자번호 388-06-03762 | <a href="tel:010-4836-6436" className="hover:text-primary transition-colors">010-4836-6436</a></p>
+            <p className="font-bold text-navy mb-2">서비스 지역: 서울 · 경기 · 인천 전지역</p>
+            <p>대표 이용훈 | 사업자번호 388-06-03762</p>
+            <p className="text-2xl font-bold text-navy mt-2">
+              <a href="tel:010-4836-6436" className="hover:text-primary transition-colors">010-4836-6436</a>
+            </p>
             <p className="pt-8 text-xs opacity-50">© 2026 맑은숨. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
@@ -818,22 +990,6 @@ export default function App() {
           />
         )}
       </AnimatePresence>
-
-      {/* Floating Action Button for Mobile */}
-      <div className="md:hidden fixed bottom-6 right-6 z-[1000] flex flex-col gap-3">
-        <a 
-          href="tel:01048366436"
-          className="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl animate-bounce"
-        >
-          <SearchCheck size={24} />
-        </a>
-        <a 
-          href="tel:010-4836-6436" 
-          className="w-14 h-14 bg-navy text-white rounded-full flex items-center justify-center shadow-2xl"
-        >
-          <Phone size={24} />
-        </a>
-      </div>
     </div>
   );
 }
