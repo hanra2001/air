@@ -356,7 +356,7 @@ const QuoteModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://formspree.io/f/mbdzbkqv", {
+      const response = await fetch("https://formspree.io/f/mzdjnwzd", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
