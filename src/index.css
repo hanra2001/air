@@ -1,7 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap');
 @import "tailwindcss";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 
 @theme {
-  --font-sans: "Noto Sans KR", "Inter", system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Noto Sans KR", system-ui, sans-serif;
+  --font-pretendard: 'Pretendard', -apple-system, sans-serif;
+  
+  --color-primary: #1294AB;
+  --color-navy: #0A1D37;
+  --color-bg-light: #F3FAFB;
+  --color-text-main: #1D1D1F;
+  --color-text-sub: #636366;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-pretendard);
+    color: var(--color-text-main);
+    line-height: 1.7;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 45s linear infinite;
+}
+
+.animate-scroll-left:hover {
+  animation-play-state: paused;
 }
